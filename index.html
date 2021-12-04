@@ -10,11 +10,39 @@
 </head>
 
 <body>
-    <div id="canvas"></div>
+    <canvas id="canvas"></canvas>
     <script>
-        canvas.onclick = (e) => {
-            console.log(e);
+        var canvas = document.getElementById("canvas");
+        canvas.width=document.documentElement.clientWidth
+        canvas.height=document.documentElement.clientHeight
+        var ctx = canvas.getContext("2d");
+        //填充顔色
+        ctx.fillStyle = "black";
+        //图像边缘
+        ctx.strokeStyle='none'
+        let painting=false
+        //鼠标按下
+        canvas.onmousedown = (e) =>{
+            painting=true;
         }
+       //鼠标移动
+        canvas.onmousemove =(e) => {
+            //編輯圖像和位置
+        if( painting===true){
+        ctx.beginPath()
+        ctx.arc(e.clientX,e.clientY,10,0,2 * Math.PI)
+        ctx.stroke()
+        ctx.fill()
+        }else{
+
+        }
+        
+        }
+         //鼠标离开
+        canvas.onmouseup=(e) =>{
+            painting=false
+        }
+
     </script>
 </body>
 
